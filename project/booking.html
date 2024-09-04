@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking - Automob-Mechanic</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav>
+        <div class="navbar-left">
+            <h1>Automob-Mechanic</h1>
+        </div>
+        <div class="navbar-right">
+            <a href="home.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="booking.html">Book a Service</a>
+            <a href="logout.html">Logout</a>
+            <a><span>📞 +9876543201</span></a>
+            <a><span>✉️ infosys@automob-mechanic.com</span></a>
+        </div>
+    </nav>
+
+    <header>
+        <h1>Book a Service</h1>
+    </header>
+
+    <div class="booking-form">
+        <form id="booking-form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" required>
+
+            <label for="phone">Phone Number:</label>
+            <div class="phone-container"> 
+                <label for="country-code">Code:</label>
+                <input type="text" id="country-code" placeholder="+91" required> 
+                <input type="text" id="phone-number" placeholder="1234567890" required> 
+            </div>
+
+            <label for="car-company">Car Company:</label>
+            <select id="car-company" required>
+                <option value="">Select Car Company</option>
+                <option value="toyota">Toyota</option>
+                <option value="honda">Honda</option>
+                <option value="ford">Ford</option>
+                <option value="bmw">BMW</option>
+                <option value="mercedes">Mercedes</option>
+                <option value="audi">Audi</option>
+                <option value="chevrolet">Chevrolet</option>
+                <option value="nissan">Nissan</option>
+                <option value="hyundai">Hyundai</option>
+                <option value="volkswagen">Volkswagen</option>
+            </select>
+            <label for="car-model">Car Model:</label>
+            <select id="car-model" required>
+                <option value="">Select Car Model</option>
+                <option value="Coupe">Coupe</option>
+                <option value="SUV">SUV</option>
+                <option value="Hatchback">Hatchback</option>
+                <option value="others">Others</option>
+            </select>
+            <label for="fuel-type">Fuel Type:</label>
+            <div style="display: flex; gap: 10px; align-items: center;">
+                <input type="radio" id="petrol" name="fuel-type" value="petrol" required>
+                <label for="petrol">Petrol</label>
+                <input type="radio" id="diesel" name="fuel-type" value="diesel">
+                <label for="diesel">Diesel</label>
+                <input type="radio" id="lpg" name="fuel-type" value="lpg">
+                <label for="lpg">LPG</label>
+                <input type="radio" id="others" name="fuel-type" value="others">
+                <label for="others">Others</label>
+            </div>
+
+            <label for="date">Service Date:</label>
+            <input type="date" id="date" required>
+
+            <label for="address">Address:</label>
+            <textarea id="address" rows="4" required></textarea>
+
+            <button type="submit">Book Now</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('booking-form').addEventListener('submit', function(event) {
+            event.preventDefault(); 
+            if (validateBooking()) {
+                showThankYouPage();
+            }
+        });
+
+        function validateBooking() {
+            const email = document.getElementById('email').value;
+            const phoneNumber = document.getElementById('phone-number').value;
+            const countryCode = document.getElementById('country-code').value;
+            const serviceDate = new Date(document.getElementById('date').value);
+
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const phoneNumberPattern = /^\d{10}$/; 
+
+            const today = new Date();
+            today.setHours(0, 0, 0, 0); 
+
+            if (!emailPattern.test(email)) {
+                alert("Invalid email format");
+                return false;
+            }
+
+            if (!phoneNumberPattern.test(phoneNumber)) {
+                alert("Phone number must be 10 digits");
+                return false;
+            }
+
+            if (serviceDate <= today) {
+                alert("Service date must be in the future");
+                return false;
+            }
+
+            return true;
+        }
+
+        function showThankYouPage() {
+    document.querySelector('.booking-form').style.display = 'none';
+    const bookingDetails = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        countryCode: document.getElementById('country-code').value,
+        phoneNumber: document.getElementById('phone-number').value,
+        carCompany: document.getElementById('car-company').value,
+        carModel: document.getElementById('car-model').value,
+        fuelType: document.querySelector('input[name="fuel-type"]:checked').nextElementSibling.textContent,
+        serviceDate: document.getElementById('date').value,
+        address: document.getElementById('address').value
+    };
+
+    localStorage.setItem('bookingDetails', JSON.stringify(bookingDetails));
+    
+    window.location.href = 'thankyou.html';
+}
+    </script>
+</body>
+</html>

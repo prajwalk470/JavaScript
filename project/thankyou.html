@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You - Automob-Mechanic</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        #thank-you-message {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        h2 {
+            color: #0590ba;
+            margin-bottom: 20px;
+        }
+        #booking-details {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+        .booking-details-key {
+            font-weight: bold;
+            display: inline-block;
+            width: 200px;
+            text-align: left;
+        }
+        .booking-details-value {
+            display: inline-block;
+            margin-left: 10px;
+        }
+        #countdown {
+            font-weight: bold;
+            color: #0590ba;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="navbar-left">
+            <h1>Automob-Mechanic</h1>
+        </div>
+        <div class="navbar-right">
+            <a href="home.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="booking.html">Book a Service</a>
+            <a href="logout.html">Logout</a>
+            <a><span>📞 +9876543201</span></a>
+            <a><span>✉️ infosys@automob-mechanic.com</span></a>
+        </div>
+    </nav>
+
+    <div id="thank-you-message">
+        <h2>Thank You for Booking!</h2>
+        <img src="./assets/congo.webp" alt="" height="150px">
+        <div id="booking-details"></div>
+        <p>Redirecting to the home page in <span id="countdown">10</span> seconds...</p>
+    </div>
+    <script src="thank.js"></script>
+</body>
+</html>

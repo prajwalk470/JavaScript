@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Automob-Mechanic</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav>
+        <div class="navbar-left">
+            <h1>Automob-Mechanic</h1>
+        </div>
+        <div class="navbar-right">
+            <a href="home.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="booking.html">Book a Service</a>
+            <a href="logout.html">Logout</a>
+            <a><span>📞 +9876543201</span></a>
+            <a><span>✉️ infosys@automob-mechanic.com</span></a>
+        </div>
+    </nav>
+    <header>
+        <h1>Login</h1>
+    </header>
+
+    <div class="login-form">
+        <form onsubmit="return validateLogin()">
+            <label for="username">Username:</label>
+            <input type="text" id="username" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" required>
+
+            <button type="submit">Login</button>
+        </form>
+    </div>
+
+    <script src="login.js">
+    </script>
+</body>
+
